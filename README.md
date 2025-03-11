@@ -1,1 +1,0 @@
-# samuelod-atmos.github.io

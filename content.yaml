@@ -1,0 +1,19 @@
+name: Samuel O'Donnell
+title: Atmospheric Scientist | Aerosol Modeling
+email: samuel@example.com
+github: https://github.com/samuelod-atmos
+linkedin: https://www.linkedin.com/in/samuel-o-donnell-73519aa2/
+
+about: >
+  I am a postdoctoral fellow at Colorado State University in the Systems Engineering Department. 
+
+projects:
+  - title: Aerosol Size Distribution Analysis
+    description: Python tools for analyzing aerosol size distributions using back trajectories and GEOS-Chem.
+    link: 
+
+  - title: Methane Emissions Modeling
+    description: Machine learning approaches to methane detection and quantification.
+    link: 
+
+

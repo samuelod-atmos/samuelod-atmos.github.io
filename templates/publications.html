@@ -4,14 +4,18 @@
 <section>
     <h3>Publications</h3>
 
-    <ul>
+    <ul class="pub-list">
     {% for pub in publications %}
         <li>
             <strong>{{ pub.authors }}</strong> ({{ pub.year }}).
             {{ pub.title }}.
-            <em>{{ pub.journal }}</em>.
+            <em>{{ pub.journal }}</em>
+            {% if pub.doi %}
+            — <a href="https://doi.org/{{ pub.doi }}">DOI</a>
+            {% endif %}
         </li>
     {% endfor %}
     </ul>
 </section>
+
 {% endblock %}

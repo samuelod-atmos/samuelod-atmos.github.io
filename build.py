@@ -1,6 +1,7 @@
 import os
 import yaml
 from jinja2 import Environment, FileSystemLoader
+import shutil
 
 OUTPUT_DIR = "docs"
 
@@ -24,8 +25,9 @@ def build():
         f.write(rendered)
 
     # Copy static files
-    os.makedirs(os.path.join(OUTPUT_DIR, "static"), exist_ok=True)
-    os.system("cp -r static/* docs/static/")
+    #os.makedirs(os.path.join(OUTPUT_DIR, "static"), exist_ok=True)
+    #os.system("cp -r static/* docs/static/")
+    shutil.copytree("static", "docs/static", dirs_exist_ok=True)
 
     print("Site built successfully.")
 

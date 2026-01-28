@@ -16,4 +16,16 @@ projects:
     description: I am currently using the MAES model to investigate methane emissions from the oil and gas sector.
     link: https://metec.colostate.edu/
 
+tagline: Atmospheric Scientist | Aerosols | Modeling
+
+publications:
+  - authors: O'Donnell, S., et al.
+    year: 2025
+    title: New particle formation in continental boundary layers
+    journal: Atmospheric Chemistry and Physics
+
+  - authors: O'Donnell, S., et al.
+    year: 2024
+    title: Aerosol microphysical evolution during transport
+    journal: Journal of Geophysical Research
 

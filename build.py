@@ -1,36 +1,32 @@
 import os
 import yaml
-from jinja2 import Environment, FileSystemLoader
 import shutil
+from jinja2 import Environment, FileSystemLoader
 
 OUTPUT_DIR = "docs"
 
+def render_page(env, template_name, output_name, context):
+    template = env.get_template(template_name)
+    html = template.render(**context)
+
+    with open(os.path.join(OUTPUT_DIR, output_name), "w", encoding="utf-8") as f:
+        f.write(html)
+
 def build():
-    # Load content
     with open("content.yaml") as f:
         content = yaml.safe_load(f)
 
-    # Setup Jinja
     env = Environment(loader=FileSystemLoader("templates"))
-    template = env.get_template("base.html")
 
-    # Render HTML
-    rendered = template.render(**content)
-
-    # Ensure output dir exists
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # Write index.html
-    with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
-        f.write(rendered)
+    render_page(env, "index.html", "index.html", content)
+    render_page(env, "publications.html", "publications.html", content)
+    render_page(env, "plots.html", "plots.html", content)
 
-    # Copy static files
-    #os.makedirs(os.path.join(OUTPUT_DIR, "static"), exist_ok=True)
-    #os.system("cp -r static/* docs/static/")
     shutil.copytree("static", "docs/static", dirs_exist_ok=True)
 
-    print("Site built successfully.")
+    print("Site built.")
 
 if __name__ == "__main__":
     build()
-

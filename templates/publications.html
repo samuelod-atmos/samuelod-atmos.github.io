@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h3>Publications</h3>
+
+    <ul>
+    {% for pub in publications %}
+        <li>
+            <strong>{{ pub.authors }}</strong> ({{ pub.year }}).
+            {{ pub.title }}.
+            <em>{{ pub.journal }}</em>.
+        </li>
+    {% endfor %}
+    </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const publications = await getCollection("publications");
+
+const formatCitation = (pub: any) => {
+  let citation = `(${pub.data.year}) ${pub.data.author}. `;
+  citation += `"${pub.data.title}." `;
+  if (pub.data.journal) {
+    citation += `<em>${pub.data.journal}</em>`;
+    if (pub.data.doi) {
+      citation += `. `;
+    }
+  }
+  if (pub.data.doi) {
+    citation += `doi: ${pub.data.doi}`;
+  }
+  return citation;
+};
+---
+
+<BaseLayout title="Publications">
+  <h2>Publications</h2>
+
+  {publications.length === 0 ? (
+    <p>No publications found.</p>
+  ) : (
+    <div class="publications-list">
+      {publications
+        .sort((a, b) => Number(b.data.year) - Number(a.data.year))
+        .map((pub) => (
+          <div class="publication-entry">
+            <p class="citation" set:html={formatCitation(pub)} />
+            {pub.data.doi && (
+              <a 
+                href={`https://doi.org/${pub.data.doi}`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="doi-link"
+              >
+                View on DOI →
+              </a>
+            )}
+          </div>
+        ))}
+    </div>
+  )}
+</BaseLayout>
+
+<style>
+  .publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .publication-entry {
+    background: rgba(22, 27, 34, 0.4);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .citation {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text);
+  }
+
+  .doi-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .doi-link:hover {
+    background: rgba(88, 166, 255, 0.2);
+    text-decoration: none;
+  }
+</style>

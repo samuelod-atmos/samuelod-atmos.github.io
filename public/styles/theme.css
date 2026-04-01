@@ -1,0 +1,16 @@
+:root {
+  /* Colors */
+  --bg: #0e1116;
+  --bg-alt: #161b22;
+  --text: #e6edf3;
+  --text-muted: #9ba3b4;
+  --accent: #58a6ff;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Layout */
+  --max-width: 900px;
+  --radius: 8px;
+}

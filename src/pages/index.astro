@@ -1,17 +1,64 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home">
+  <div class="bio-section">
+    <div class="bio-image">
+      <img src="/IMG_3485.jpg" alt="Samuel O'Donnell" />
+    </div>
+    <div class="bio-content">
+      <p>
+        I am a postdoctoral fellow with Dr. Anna Hodshire in the Systems Engineering Department at Colorado State University. I currently work with the Mechanistic Air Emissions Simulator (MAES) to investigate methane emissions from oil and gas operations.
+      </p>
+
+      <p>
+        My PhD focused on the process of new particle formation and growth in the atmosphere. I used a variety of aerosol and chemistry models to understand the processes driving aerosol particle formation and growth in different environments.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .bio-section {
+    max-width: 2500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;    background: rgba(22, 27, 34, 0.6);
+    padding: 3rem;
+    border-radius: 12px;  }
+
+  .bio-image {
+    flex-shrink: 0;
+    width: 440px;
+  }
+
+  .bio-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .bio-content {
+    flex: 1;
+  }
+
+  .bio-content p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .bio-section {
+      flex-direction: column;
+    }
+
+    .bio-image {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+</style>

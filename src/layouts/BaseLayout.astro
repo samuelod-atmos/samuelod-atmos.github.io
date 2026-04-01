@@ -1,0 +1,35 @@
+---
+const { title } = Astro.props;
+import ParticlesBackground from "../components/ParticlesBackground.jsx";
+---
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <link rel="stylesheet" href="/styles/theme.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+
+  <body>
+    <ParticlesBackground client:only="react" />
+
+    <div class="container">
+      <header>
+        <h1>Samuel O'Donnell</h1>
+        <nav>
+          <a href={`${import.meta.env.BASE_URL}`}>Home</a>
+          <a href={`${import.meta.env.BASE_URL}publications/`}>Publications</a>
+          <a href={`${import.meta.env.BASE_URL}plots/`}>Interactive</a>
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+    </div>
+  </body>
+</html>

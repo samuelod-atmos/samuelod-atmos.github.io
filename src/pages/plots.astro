@@ -1,16 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import LorenzAttractor from "../components/LorenzAttractor.jsx";
-import LorenzAttractor3D from "../components/LorenzAttractor3D.jsx";
+import AerosolParticles from "../components/AerosolParticles.jsx";
 ---
 
-<!-- <BaseLayout title="Interactive">
-  <h2>Lorenz Attractor Demo</h2>
-  <LorenzAttractor client:only="react" />
-  <p>Interactive plots coming soon.</p>
-</BaseLayout> -->
-
-<BaseLayout title="Interactive 3D">
-  <h2>Lorenz Attractor 3D Demo</h2>
-  <LorenzAttractor3D client:only="react" />
+<BaseLayout title="Interactive" showParticles={false}>
+  <h2>Atmospheric Aerosol Explorer</h2>
+  <AerosolParticles client:only="react" />
+  <p>Use the slider to change the number of aerosol particles floating in the atmosphere.</p>
 </BaseLayout>
